@@ -24,7 +24,7 @@
                 </h1>
                 <h2>
                 </h2>
-                <label id="my_settings" class="btn_mn">000</label>
+                <label id="my_settings" class="btn_mn">Настройки</label>
                 <label id="my_items" class="btn_mn">Мои товары</label>
                 <label id="my_lots" class="btn_mn">Мои лоты</label>
                 <label id="logout" class="btn_mn">Выйти</label>
