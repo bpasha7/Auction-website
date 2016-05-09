@@ -1,0 +1,7 @@
+<?php
+require_once 'config.php';
+require_once 'db.php';
+
+// подключаемся к БД
+$obj=db_connect(DBHOST, DBUSER, DBPASSWD, DBNAME);
+?>

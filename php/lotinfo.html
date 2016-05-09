@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<title></title>
+<meta name="" content="">
+<link rel="stylesheet" href="css\iteminfo.css" media="screen" type="text/css" />
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<!--<script src="scripts/home_script.js"></script>-->
+<script>
+$(document).ready(function($) {
+
+	
+  //Нажатие на картинку
+  $('#images').children().click(function(){
+  	//var l = $('#images').children().length;
+  	var clickedimg = event.target.id;
+  	/*var imgarr =[];
+  	for(i=0;i<l;i++){
+  		var imgset = {};
+  		imgset.id = "image"+i.toString();
+  		imgset.imgfull = "i"+i.toString();
+  		imgarr.push(imgset);
+  	}*/
+  	var at =$('#'+clickedimg.toString()).prop('src');
+  	//at= at.substr(19, at.legth);
+  	$("#f").attr("src",at);
+  	$("#grey_screen").css('display','block');
+  	//$("#f").css('display','block');
+  	$('#imgboard').show();
+  	$("#images").hide();
+  	$("#slider").hide();
+  	//$('#f').attr('src', $('3f').attr('src').
+	//$('#'+clickedimg.toString()+'f').show();
+  	});
+  	
+  	$("#grey_screen").click(function(e){
+		//$(".menu .active").removeClass();
+		$('#grey_screen').css('display','none');
+		$('#imgboard').hide();
+		$("#images").show();
+		$("#slider").show();
+		//$("#main_page").addClass("active");
+	});
+
+  /*//Закгрузка списка групп товаров
+  $('#'+GroupList).focus(function(e) {
+      $.ajax({url: 'grp.php',
+	    success: function(output) {
+		$('#'+GroupList).html(output);
+	    },
+	  error: function (xhr, ajaxOptions, thrownError) {
+	    alert(xhr.status + " "+ thrownError);
+	  }});       
+  });  */ 
+  });
+</script>
+</head>
+<body>
+<div id="grey_screen"></div>
+<div id="imgboard" hidden=""><img id="f" src="#"/></div>
+
+<div id="images">
+  <!--<img id="image1" src="image_data\1\1.jpg" />
+  print "<img id=\"image2\" src=\"image_data\\1\\2.jpg\" />";
+  <img id="image3" src="image_data\1\3.jpg" />-->
+</div>
+<div id="slider">
+<!--  <a href="#image1">1</a>
+  <a href="#image2">2</a>
+  <a href="#image3">3</a>-->
+</div>
+
+</body>
+</html>
