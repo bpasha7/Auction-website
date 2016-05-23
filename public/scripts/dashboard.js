@@ -105,14 +105,20 @@ $.ajax({
                     }  
                 });     
   });
-		
-/*$.ajax({
-      url: "http://wts.dev/dashboard/logout",
-      type: "POST",
-         error: function() {
-                        alert("Ошибка выхода(");
-                  }
-        });
-        return false; */
 	});
+		//Users items
+	$('#my_items').click(function(e){
+		$('#tst').animate({
+    height: "500"
+  }, 500, function() {
+    $('#open_userbar').offset({top:500, right:5});
+		$( "#tbl" ).empty();   
+                $.ajax({   
+                    url: URL+'userpanel/items',  
+                    success: function(html){  
+                        $("#tbl").html(html);  
+                    }  
+                });     
+  });
+  });
 });

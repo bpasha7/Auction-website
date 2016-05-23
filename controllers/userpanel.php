@@ -17,6 +17,10 @@ class UserPanel extends Controller
 	{
 		$this->model->lots();
 	}
+	public function items()
+	{
+		$this->model->items();
+	}
 
 }
 ?>

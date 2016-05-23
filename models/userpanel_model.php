@@ -51,7 +51,54 @@ class UserPanel_Model extends Model
 				
 			}
     }
-     public function lots()
+     public function items()
+    {
+    	Session::init();
+            if(Session::get('loggedIn') == true)
+            {
+            $userid = Session::get('User');
+            //How many items does user have
+            $sth    = $this->database->prepare("SELECT * FROM aboutitems WHERE OwnerId = :userid");
+            $sth->execute(array(
+                    ':userid'=> $userid
+                ));
+            $count= $sth->rowCount();
+            if ($count > 0)
+            {	
+            echo "<tr>\n
+					\t<td>Товар</td>\n
+					\t<td>Группа</td>\n
+					\t<td width=\"110\" class=\"ac\">Управление</td>\n";		
+			$odd = 1;
+            while($row = $sth->fetch(PDO::FETCH_LAZY))
+            {
+            	if($odd % 2 == 0)
+            		echo "<tr>\n";
+            	else
+            		echo "<tr class=\"odd\">\n";
+				echo 
+					"\t<td><h3>".$row->ItemName."</h3></td>\n
+					\t<td>".$row->GroupName."</td>\n
+					\t<td><a href=\"#\" class=\"ico del\">Удалить</a>
+					<a href=\"#\" class=\"ico lot\">Выставить</a>
+					<a href=\"#\" class=\"ico edit\">Изменить</a></td></tr>\n";
+					$odd++;	
+			}
+			//echo "</tbody>";
+			}
+			else
+			{
+				
+			}
+            	//$data[] = $row;                  
+           // echo json_encode($data);
+            $sth->closeCursor();
+            }
+            else
+            {
+			}
+    }
+    public function lots()
     {
     	Session::init();
             if(Session::get('loggedIn') == true)
