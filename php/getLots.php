@@ -3,8 +3,9 @@ header ("Content-Type: text/html; charset=utf-8");
 include 'db_connect.php';
 $pat = $_POST['pat'];
 $grp = $_POST['grp'];
+$srt = $_POST['srt'];
 $q = "SELECT ItemId, ItemName, `Группа`, `Цена`, `Кол-во` FROM aboutlots WHERE
- ItemName LIKE '%$pat%' AND `Группа` = '$grp'";
+ ItemName LIKE '%$pat%' AND `Группа` = '$grp' ORDER BY 2 $srt";
 $result = db_query($q);
 if (mysql_num_rows($result) == 0)//вывод сообщения о том, что ничего не найдено
 	print("<p align=\"center\">Ничего не найдено, попробуйте еще=)</p>");

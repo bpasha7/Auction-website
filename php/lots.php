@@ -7,10 +7,10 @@ header ("Content-Type: text/html; charset=utf-8"); ?>
 <style>
 
 </style>
-<link rel= "stylesheet" style= "text/css" href= "style.css" />
+<!--<link rel= "stylesheet" style= "text/css" href= "style.css" />-->
 <script src="http://code.jquery.com/jquery-latest.js"></script>
-<script src="scripts/home_script.js"></script>
-<script>
+<script src="scripts/lots_script.js"></script>
+<!--<script>
 $(document).ready(function($) {
   var GroupList = 'grp-list';
   var btn_search = 'btn_search';
@@ -20,11 +20,12 @@ $(document).ready(function($) {
   $('#'+btn_search).click(function(){
   	var pat = $('#nm').val();
   	var grp =$('#'+GroupList).val();
+  	var srt_t = $('#sort_type').val();
   	//Передача данных методом POST
   	      $.ajax({
   	      	type: "post",
   	      	url: 'getLots.php',
-  	        data: { pat: pat, grp: grp },
+  	        data: { pat: pat, grp: grp, srt: srt_t  },
 	    success: function(output) {
 		$('#tbl').html(output);
 	    },
@@ -44,7 +45,7 @@ $(document).ready(function($) {
 	  }});       
   });   
   });
-</script>
+</script>-->
 </head>
 
 <body>
@@ -68,13 +69,16 @@ echo $_SESSION['userid'];
 ?>-->
 
 
-<h2 align="center">Лоты</h2>
+<h2 align="center">Поиск объявлений</h2>
 <span style=" position: relative; left: 40%; color:#c611ab;">
 	<input id="nm" type="text" name="name"  style="width: 310px; height: 30px; color: #c611ab;  font-size: 25px" placeholder ="Давай найдем что-нибудь"><br>
 	<select name="grp-list" id="grp-list" style="width: 220px; height: 30px; color: #c611ab; margin-top: 8px;font-size: 18px; margin-right: 3px">
 </select>
 <input id="btn_search" name="btn_search" class="button" type="submit" value="Найти"><br>
-
+	<select id="sort_type" style="width: 220px; height: 30px; color: #c611ab; margin-top: 8px;font-size: 18px; margin-right: 3px">
+			 	<option value="ASC">Цена /\</option>	 
+			 	<option value="DESC">Цена \/</option>			
+	</select>
 </span>
 
 <table id="tbl">

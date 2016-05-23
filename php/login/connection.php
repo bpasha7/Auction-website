@@ -1,29 +1,29 @@
-<?php
+<?php 
 header('Content-Type: application/json');
 header ("Content-Type: text/html; charset=utf-8"); 
 $username = $_POST['username'];
 $password = md5($_POST['password']);
-/* Ïîäêëþ÷åíèå ê ñåðâåðó MySQL */ 
+/* ÐŸÐ¾Ð´ÐºÐ»ÑŽÑ‡ÐµÐ½Ð¸Ðµ Ðº ÑÐµÑ€Ð²ÐµÑ€Ñƒ MySQL */ 
 $link = mysqli_connect( 
-            '127.0.0.1',  /* Õîñò, ê êîòîðîìó ìû ïîäêëþ÷àåìñÿ */ 
-            'banned',       /* Èìÿ ïîëüçîâàòåëÿ */ 
-            '',   /* Èñïîëüçóåìûé ïàðîëü */ 
-            'auction');     /* Áàçà äàííûõ äëÿ çàïðîñîâ ïî óìîë÷àíèþ */ 
+            '127.0.0.1',  /* Ð¥Ð¾ÑÑ‚, Ðº ÐºÐ¾Ñ‚Ð¾Ñ€Ð¾Ð¼Ñƒ Ð¼Ñ‹ Ð¿Ð¾Ð´ÐºÐ»ÑŽÑ‡Ð°ÐµÐ¼ÑÑ */ 
+            'banned',       /* Ð˜Ð¼Ñ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ */ 
+            '',   /* Ð˜ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÐµÐ¼Ñ‹Ð¹ Ð¿Ð°Ñ€Ð¾Ð»ÑŒ */ 
+            'auction');     /* Ð‘Ð°Ð·Ð° Ð´Ð°Ð½Ð½Ñ‹Ñ… Ð´Ð»Ñ Ð·Ð°Ð¿Ñ€Ð¾ÑÐ¾Ð² Ð¿Ð¾ ÑƒÐ¼Ð¾Ð»Ñ‡Ð°Ð½Ð¸ÑŽ */ 
 
 if (!$link) { 
-   printf("Íåâîçìîæíî ïîäêëþ÷èòüñÿ ê áàçå äàííûõ. Êîä îøèáêè: %s\n", mysqli_connect_error()); 
+   printf("ÐÐµÐ²Ð¾Ð·Ð¼Ð¾Ð¶Ð½Ð¾ Ð¿Ð¾Ð´ÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÑŒÑÑ Ðº Ð±Ð°Ð·Ðµ Ð´Ð°Ð½Ð½Ñ‹Ñ…. ÐšÐ¾Ð´ Ð¾ÑˆÐ¸Ð±ÐºÐ¸: %s\n", mysqli_connect_error()); 
    exit; 
 }
 //echo("OK");
 //$username = "ii@mail.ru";
 //$password = "827CCB0EEA8A706C4C34A16891F84E7B";
-/* Ïîñûëàåì çàïðîñ ñåðâåðó */ 
+/* ÐŸÐ¾ÑÑ‹Ð»Ð°ÐµÐ¼ Ð·Ð°Ð¿Ñ€Ð¾Ñ ÑÐµÑ€Ð²ÐµÑ€Ñƒ */ 
 if ($result = mysqli_query($link, "SELECT UserId, UserRole, UserName FROM Users WHERE
 	UserMail = '$username' AND UserPass = '$password'")) { 
 
 	// echo (mysqli_result($result,0,'UserId'));
 	// echo mysqli_result($result,0,'UserName');
-    /* Âûáîðêà ðåçóëüòàòîâ çàïðîñà */ 
+    /* Ð’Ñ‹Ð±Ð¾Ñ€ÐºÐ° Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ð¾Ð² Ð·Ð°Ð¿Ñ€Ð¾ÑÐ° */ 
     session_start();
     while( $row = mysqli_fetch_assoc($result) ){ 
    // $_SESSION['username'] = $username;
@@ -37,10 +37,10 @@ if ($result = mysqli_query($link, "SELECT UserId, UserRole, UserName FROM Users 
            // printf("%s (%s) %s\n", $row['UserId'], $row['UserRole'], $row['UserName']); 
     } 
 
-    /* Îñâîáîæäàåì èñïîëüçóåìóþ ïàìÿòü */ 
+    /* ÐžÑÐ²Ð¾Ð±Ð¾Ð¶Ð´Ð°ÐµÐ¼ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÐµÐ¼ÑƒÑŽ Ð¿Ð°Ð¼ÑÑ‚ÑŒ */ 
     mysqli_free_result($result); 
 } 
 
-/* Çàêðûâàåì ñîåäèíåíèå */ 
+/* Ð—Ð°ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼ ÑÐ¾ÐµÐ´Ð¸Ð½ÐµÐ½Ð¸Ðµ */ 
 mysqli_close($link); 
 ?>
