@@ -58,7 +58,7 @@ class UserPanel_Model extends Model
             {
             $userid = Session::get('User');
             //How many items does user have
-            $sth    = $this->database->prepare("SELECT * FROM userslots");
+            $sth    = $this->database->prepare("SELECT * FROM userslots WHERE UserId = :userid");
             $sth->execute(array(
                     ':userid'=> $userid
                 ));
