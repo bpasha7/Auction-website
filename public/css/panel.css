@@ -23,7 +23,7 @@ a:hover { color:#8d341f; text-decoration: none;}
 .box h1{ font-size:22px; line-height:24px; color:#fff; font-weight: normal;}
 .box h1 a{ color:#fff; text-decoration: none; }
 .box h2 { color:#fff;font-weight: normal; }
-.box h3 { font-size:12px; line-height:14px; font-weight: normal; }
+.box h3 { font-size:20px; line-height:14px; font-weight: normal; }
 .box h3 a{ text-decoration: none; }
 
 .table {}
@@ -48,9 +48,28 @@ padding:0; margin:0; outline:0; }
 .pagging a:hover { border-color:#8c3521; background:#ba4c32; color:#fff; }
 .pagging span{ float:left; margin-left:5px; padding-top:2px; }
 
+a .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: #ffd7f8;
+    color: #f112e7;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
 
-a.ico { color:#9d9c9a; font-size:10px; text-decoration: none; padding:0 0 0 14px; background-repeat:no-repeat; background-position:0 0; }
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+}
+
+a:hover .tooltiptext {
+    visibility: visible;
+}
+
+
+a.ico { color:#9d9c9a; font-size:23px; text-decoration: none; padding:0 0 0 25px; background-repeat:no-repeat; background-position:0 0; }
 a.ico:hover { color:#333;}
-a.del { background-image:url(/public/images/del.gif)}
-a.edit { background-image:url(/public/images/edit.gif); margin-left:14px;}
+a.del { background-image:url(/public/images/del.png); vertical-align: middle;}
+a.edit { background-image:url(/public/images/edit.png); margin-left:14px;vertical-align: middle;}
+a.create { background-image:url(/public/images/create.png); margin-left:14px;vertical-align: middle;}
 

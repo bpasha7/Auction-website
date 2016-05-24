@@ -45,7 +45,18 @@ $.ajax({
                     }  
                 });  
                 return false;  
-            });             
+            });      
+    //load items table
+    	$('body').delegate('#my_items', 'click', function(){
+		$( "#userbar_content" ).empty();   
+                $.ajax({   
+                    url: URL+'userpanel/index',  
+                    success: function(html){  
+                        $("#userbar_content").html(html);  
+                    }  
+                });  
+                return false;  
+            });         
 	//logout from control panel
 		$("#logout").click(function(e){
 		var returnVal = confirm("Выйти из учетной записи?");
@@ -108,17 +119,18 @@ $.ajax({
 	});
 		//Users items
 	$('#my_items').click(function(e){
-		$('#tst').animate({
+		$( "#tbl" ).empty(); 
+		$('#tst').height(500);
+		/*$('#tst').animate({
     height: "500"
-  }, 500, function() {
-    $('#open_userbar').offset({top:500, right:5});
-		$( "#tbl" ).empty();   
+  }, 500, function() {*/
+    $('#open_userbar').offset({top:500, right:5});		  
                 $.ajax({   
                     url: URL+'userpanel/items',  
                     success: function(html){  
                         $("#tbl").html(html);  
                     }  
                 });     
-  });
+  //});
   });
 });

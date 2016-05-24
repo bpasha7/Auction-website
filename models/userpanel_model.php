@@ -68,7 +68,7 @@ class UserPanel_Model extends Model
             echo "<tr>\n
 					\t<td>Товар</td>\n
 					\t<td>Группа</td>\n
-					\t<td width=\"110\" class=\"ac\">Управление</td>\n";		
+					\t<td width=\"110\" class=\"ac\">Управление</td></tr>\n";		
 			$odd = 1;
             while($row = $sth->fetch(PDO::FETCH_LAZY))
             {
@@ -79,9 +79,10 @@ class UserPanel_Model extends Model
 				echo 
 					"\t<td><h3>".$row->ItemName."</h3></td>\n
 					\t<td>".$row->GroupName."</td>\n
-					\t<td><a href=\"#\" class=\"ico del\">Удалить</a>
-					<a href=\"#\" class=\"ico lot\">Выставить</a>
-					<a href=\"#\" class=\"ico edit\">Изменить</a></td></tr>\n";
+					\t<td>
+					<a href=\"#\" class=\"ico create\"><span class=\"tooltiptext\">Создать лот</span></a>
+					<a href=\"#\" class=\"ico edit\"><span class=\"tooltiptext\">Изменить</span></a>
+					<a href=\"#\" class=\"ico del\"><span class=\"tooltiptext\">Удалить</span></a></td></tr>\n";
 					$odd++;	
 			}
 			//echo "</tbody>";
@@ -118,7 +119,7 @@ class UserPanel_Model extends Model
 					\t<th>Цена</th>\n
 					\t<th>Дата создания</th>\n
 					\t<th>Тип</th>\n
-					\t<th width=\"110\" class=\"ac\">Управление</th>\n";		
+					\t<th width=\"110\" class=\"ac\">Управление</th></tr>\n";		
 			$odd = 1;
             while($row = $sth->fetch(PDO::FETCH_LAZY))
             {
@@ -132,8 +133,9 @@ class UserPanel_Model extends Model
 					\t<td>".$row->Price."</td>\n
 					\t<td>".$row->Created."</td>\n
 					\t<td>".$row->PrName."</td>\n
-					\t<td><a href=\"#\" class=\"ico del\">Завершить</a>
-					<a href=\"#\" class=\"ico edit\">Изменить</a></td></tr>\n";
+					\t<td>
+					<a href=\"#\" class=\"ico edit\"><span class=\"tooltiptext\">Изменить</span></a>
+					<a href=\"#\" class=\"ico del\"><span class=\"tooltiptext\">Удалить</span></a></td></tr>\n";
 					$odd++;	
 			}
 			//echo "</tbody>";
