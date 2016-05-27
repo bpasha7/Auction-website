@@ -51,6 +51,24 @@ class UserPanel_Model extends Model
 				
 			}
     }
+    public function deleteitem($id)
+    {
+		        Session::init();
+        if (Session::get('loggedIn') == true) {
+            $userid = Session::get('User');
+            $sth    = $this->database->prepare("DELETE FROM items WHERE OwnerId = :userid AND ItemId = :itemid");
+            if ($sth->execute(array(
+                        ':userid'=> $userid,
+                        ':itemid'=>$id
+                    )))
+            echo 'Товар удален';
+            else
+            echo 'Ошибка БД';
+        }
+        else {
+            echo 'Ошибка удаления!';
+        }
+	}
      public function items()
     {
     	Session::init();
@@ -58,7 +76,7 @@ class UserPanel_Model extends Model
             {
             $userid = Session::get('User');
             //How many items does user have
-            $sth    = $this->database->prepare("SELECT * FROM aboutitems WHERE OwnerId = :userid");
+            $sth = $this->database->prepare("SELECT * FROM aboutitems WHERE OwnerId = :userid");
             $sth->execute(array(
                     ':userid'=> $userid
                 ));
@@ -66,7 +84,7 @@ class UserPanel_Model extends Model
             if ($count > 0)
             {	
             echo "<tr>\n
-					\t<td>Товар</td>\n
+					\t<td>Товар <a id=\"new_item\" rel=\"form\">(Добавить новый)</a></td>\n
 					\t<td>Группа</td>\n
 					\t<td width=\"110\" class=\"ac\">Управление</td></tr>\n";		
 			$odd = 1;
@@ -80,9 +98,9 @@ class UserPanel_Model extends Model
 					"\t<td><h3>".$row->ItemName."</h3></td>\n
 					\t<td>".$row->GroupName."</td>\n
 					\t<td>
-					<a href=\"#\" class=\"ico create\"><span class=\"tooltiptext\">Создать лот</span></a>
-					<a href=\"#\" class=\"ico edit\"><span class=\"tooltiptext\">Изменить</span></a>
-					<a href=\"#\" class=\"ico del\"><span class=\"tooltiptext\">Удалить</span></a></td></tr>\n";
+					<a rel=\"".$row->ItemId."\" class=\"ico create\"><span class=\"tooltiptext\">Создать лот</span></a>
+					<a rel=\"".$row->ItemId."\" class=\"ico edit\"><span class=\"tooltiptext\">Изменить</span></a>
+					<a rel=\"".$row->ItemId."\" class=\"ico del\"><span class=\"tooltiptext\">Удалить</span></a></td></tr>\n";
 					$odd++;	
 			}
 			//echo "</tbody>";

@@ -1,9 +1,10 @@
 ﻿#container {
- width: 1200px;
- margin: 100px auto;
+	width: 95%;
+    margin: 10% auto;
+
 }
 
-ul, li {
+#container ul, li {
  margin: 0; padding: 0;
 }
 
@@ -26,6 +27,7 @@ ul, li {
 
 #nav {
  position: relative;
+     left: 18%;
  background: #292929;
  float: left;
 }

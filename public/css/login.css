@@ -1,8 +1,7 @@
 #loginForm {
 	/*display: none;*/
-	position: absolute;
-	left: 42%;
-	top: 2%;
+	position: relative;
+	top: -10%;
 	width: 290px;
 	padding: 24px 24px 0;
 	margin: 200px auto 0;

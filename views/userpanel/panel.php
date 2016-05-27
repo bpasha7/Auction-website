@@ -2,8 +2,7 @@
 <div id="box" class="box">
 <!-- Box Head-->
 <div class="box-head">
-    <h2 class="left">
-        Мои Лоты
+    <h2 id="tbl_name" class="left">
     </h2>
     <div class="pright">
         <label>

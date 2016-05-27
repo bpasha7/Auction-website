@@ -12,6 +12,8 @@
 	<link rel="stylesheet" href="<?php echo URL; ?>public/css/login.css">
 	<link rel="stylesheet" href="<?php echo URL; ?>public/css/footer.css">
 	<link rel="stylesheet" href="<?php echo URL; ?>public/css/panel.css">
+	<link rel="stylesheet" href="<?php echo URL; ?>public/css/home.css">
+	<link rel="stylesheet" href="<?php echo URL; ?>public/css/form.css">
 	<script src="<?php echo URL; ?>public/scripts/jquery-2.2.3.min.js"></script>
 	<script src="<?php echo URL; ?>public/scripts/general.js"></script>
 	<script src="<?php echo URL; ?>public/scripts/dashboard.js"></script>
@@ -28,11 +30,11 @@
 <body>
 <?php Session::init(); ?>
 <input class="open" id="top-box" type="checkbox" hidden>
-       <label id="open_userbar" class="btn" for="top-box"></label>
+       <label id="open_userbar" class="btn" for="top-box"  <?php if(Session::get('loggedIn') == true) echo 'style="visibility: visible;"'?>> <?php if(Session::get('loggedIn') == true) echo Session::get('UserName')?></label>
         <div id="tst" class="top-panel">
             <div class="message">
                 <h1>
-                    <label id="userbar_user"></label>, на вашем счету <label id="userbar_rub"></label> &#8381, <label id="userbar_dol"></label>$ и 
+                    <label id="userbar_user"><?php if(Session::get('loggedIn') == true) echo Session::get('UserName')?></label>, на вашем счету <label id="userbar_rub"></label> &#8381, <label id="userbar_dol"></label>$ и 
                     <label id="userbar_bonuses"></label> <img  alt="bns" src="<?php echo URL; ?>public/images/bounus_ico.png" width="32px" height="32px" style="vertical-align: middle">
                 </h1>
                 <h2>
@@ -46,32 +48,25 @@
             </div>
         </div>
 <!--<div id="header">-->
+<!--<h1>Главная страница</h1>-->
+<div id="login_back" class="back"></div>
 <div id="container">
 	<ul id="nav">
 		<li id="selected"><a href="<?php echo URL; ?>index">Главная</a></li>
-		<li><a href="<?php echo URL; ?>index">Поиск</a></li>
-		<li><a href="#">Лоты</a></li>
+		<li><a href="#">Аукцион</a></li>
+		<li><a href="<?php echo URL; ?>index">Правила</a></li>
 		<li><a id="menu_help">Помощь</a></li>
-		<li><a href="#">Contact</a></li>
-		<li><a id="menu_login">Войти</a></li>
-		<!--<?php
-			if(Session::get('loggedIn') == true):?>
-				<li><a href="<?php echo URL; ?>dashboard/logout">Выйти</a></li>
-		
+		<li><a href="#">О нас</a></li>
 		<?php
-			else:
-		?> 
-		<li><a id="menu_login" href="<?php echo URL;?>login">Войти</a></li>
-		<?php 
-		//php echo URL; login
-			endif; 
-		?>-->
-		
+			if(Session::get('loggedIn') != true)
+			echo '<li><a id="menu_login">Войти</a></li>';
+			else
+			echo '<li style="display: none;"><a id="menu_login">Войти</a></li>';
+			?>	
 	</ul
 	<br>
 </div>
 
 <!--</div>-->
 <div id="content">
-<p>rwerrrerwwerwe</p>
 </div>

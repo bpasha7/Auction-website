@@ -26,6 +26,7 @@ class Login_Model extends Model
 			Session::set('loggedIn', true);		
 			Session::set('User', $data['UserID']);
 			Session::set('Role',  $data['UserRole']);
+			Session::set('UserName',  $data['UserName']);
 			echo json_encode($data);
 			//$msv = array('x1' => 10, 'x2' => 20, 'x3' => 30);
 			//$jmsv= json_encode($msv, true);	

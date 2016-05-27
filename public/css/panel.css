@@ -11,7 +11,7 @@ a img { border:0; }
 a { color:#ba4c32; text-decoration: underline; cursor:pointer; }
 a:hover { color:#8d341f; text-decoration: none;}
 
-.left, .alignleft {  padding- top:5px;display:inline; }
+.left, .alignleft {  padding-top:5px;display:inline; }
 .pright, .alignright { float:right; display:inline; }
 
 .cl { font-size:0; line-height:0; clear:both; display:block; height:0; }
@@ -49,6 +49,7 @@ padding:0; margin:0; outline:0; }
 .pagging span{ float:left; margin-left:5px; padding-top:2px; }
 
 a .tooltiptext {
+	font-size: 18px;
     visibility: hidden;
     width: 120px;
     background-color: #ffd7f8;
